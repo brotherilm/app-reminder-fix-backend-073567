@@ -29,6 +29,7 @@ import {
   editAccordition,
   deleteAccordition,
 } from "../controllers/accorditionUser.js";
+import { getTotalModalProfit } from "../controllers/getAnalysis.js";
 
 const router = express.Router();
 
@@ -83,5 +84,8 @@ router.post("/create-accordition", createAccordition);
 router.post("/get-accordition", getAccorditions);
 router.post("/edit-accordition", editAccordition);
 router.post("/delete-accordition", deleteAccordition);
+
+// get total modal and profit
+router.get("/get-analysis", getTotalModalProfit);
 
 export default router;

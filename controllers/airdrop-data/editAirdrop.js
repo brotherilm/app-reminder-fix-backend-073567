@@ -28,6 +28,16 @@ export async function editAirdrop(req, res) {
       LinkTelegramChannel,
       LinkWebAnnountcement,
       LinkX,
+      senin,
+      selasa,
+      rabu,
+      kamis,
+      jumat,
+      sabtu,
+      minggu,
+      funding,
+      modal,
+      profit,
     } = req.body;
 
     // Validasi basic
@@ -55,6 +65,16 @@ export async function editAirdrop(req, res) {
       LinkTelegramChannel,
       LinkWebAnnountcement,
       LinkX,
+      senin,
+      selasa,
+      rabu,
+      kamis,
+      jumat,
+      sabtu,
+      minggu,
+      funding,
+      modal,
+      profit,
     };
 
     const objectId = new ObjectId(_id);
@@ -85,6 +105,16 @@ export async function editAirdrop(req, res) {
           "additionalAirdrop.$.LinkWebAnnountcement":
             updatedData.LinkWebAnnountcement,
           "additionalAirdrop.$.LinkX": updatedData.LinkX,
+          "additionalAirdrop.$.senin": updatedData.senin,
+          "additionalAirdrop.$.selasa": updatedData.selasa,
+          "additionalAirdrop.$.rabu": updatedData.rabu,
+          "additionalAirdrop.$.kamis": updatedData.kamis,
+          "additionalAirdrop.$.jumat": updatedData.jumat,
+          "additionalAirdrop.$.sabtu": updatedData.sabtu,
+          "additionalAirdrop.$.minggu": updatedData.minggu,
+          "additionalAirdrop.$.funding": updatedData.funding,
+          "additionalAirdrop.$.modal": updatedData.modal,
+          "additionalAirdrop.$.profit": updatedData.profit,
         },
       }
     );
