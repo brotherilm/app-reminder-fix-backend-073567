@@ -86,6 +86,6 @@ router.post("/edit-accordition", editAccordition);
 router.post("/delete-accordition", deleteAccordition);
 
 // get total modal and profit
-router.get("/get-analysis", getTotalModalProfit);
+router.post("/get-analysis", getTotalModalProfit);
 
 export default router;
