@@ -30,11 +30,14 @@ import {
   deleteAccordition,
 } from "../controllers/accorditionUser.js";
 import { getTotalModalProfit } from "../controllers/getAnalysis.js";
+import { getAnalysisPublic } from "../controllers/getAnalysisPublic.js";
 
 const router = express.Router();
 
 router.post("/login", login);
 router.post("/register", register);
+
+app.use('/public-analysis', getAnalysisPublic);
 
 // subcription
 router.post("/subcription", userSubscription);
