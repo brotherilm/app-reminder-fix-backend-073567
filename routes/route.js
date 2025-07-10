@@ -30,6 +30,7 @@ import {
   deleteAccordition,
 } from "../controllers/accorditionUser.js";
 import { getTotalModalProfit } from "../controllers/getAnalysis.js";
+import { getListAirdrop } from "../controllers/getAnalysisPublic.js";
 
 const router = express.Router();
 
@@ -39,6 +40,8 @@ router.post("/register", register);
 // subcription
 router.post("/subcription", userSubscription);
 router.get("/subcription", getSubscriptionStatus);
+
+router.post("/get-analysis-public", getListAirdrop);
 
 // verify token for all route
 router.use(verifyToken);
