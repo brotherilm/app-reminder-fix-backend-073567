@@ -7,48 +7,39 @@ export const getAnalysisPublic = async (req, res) => {
     const database = client.db("airdrop");
     const collection = database.collection("users");
     
-    // Ambil semua user (atau bisa juga ditambahkan parameter untuk filter tertentu)
+    // Ambil semua user
     const users = await collection.find({}).toArray();
     
-    let totalModalAll = 0;
-    let totalProfitAll = 0;
-    let totalCount = 0;
     const allAirdrops = [];
     
-    // Hitung total untuk semua user
+    // Kumpulkan data airdrop tanpa informasi finansial
     users.forEach(user => {
       if (user.additionalAirdrop && Array.isArray(user.additionalAirdrop)) {
         user.additionalAirdrop.forEach((airdrop) => {
-          const modal = parseFloat(airdrop.modal) || 0;
-          const profit = parseFloat(airdrop.profit) || 0;
-          totalModalAll += modal;
-          totalProfitAll += profit;
-          totalCount++;
-          
           allAirdrops.push({
-            userId: user._id,
             airdropId: airdrop.airdropId,
             name: airdrop.name || "-",
-            modal: modal,
-            profit: profit,
-            PNL: profit - modal
+            // Informasi lain yang ingin ditampilkan (kecuali data finansial)
+            // Contoh:
+            // status: airdrop.status,
+            // category: airdrop.category,
+            // date: airdrop.date
           });
         });
       }
     });
     
-    const PNLAall = totalProfitAll - totalModalAll;
-    
     return res.status(200).json({
-      totalModal: totalModalAll,
-      totalProfit: totalProfitAll,
-      PNL: PNLAall,
-      count: totalCount,
-      details: allAirdrops
+      success: true,
+      count: allAirdrops.length,
+      airdrops: allAirdrops
     });
     
   } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "Internal server error" });
+    console.error("Public Analysis Error:", error);
+    return res.status(500).json({ 
+      success: false,
+      message: "Failed to fetch public airdrop data" 
+    });
   }
 };
