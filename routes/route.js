@@ -37,7 +37,7 @@ const router = express.Router();
 router.post("/login", login);
 router.post("/register", register);
 
-app.use('/public-analysis', getAnalysisPublic);
+router.post("/public-analysis", getAnalysisPublic);
 
 // subcription
 router.post("/subcription", userSubscription);
